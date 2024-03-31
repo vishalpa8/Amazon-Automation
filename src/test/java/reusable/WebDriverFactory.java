@@ -11,15 +11,13 @@ import org.openqa.selenium.edge.EdgeDriver;
 import java.io.File;
 import java.io.IOException;
 
-public class GenericComponents {
+public class WebDriverFactory {
 
-    protected static final ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
+    private static final ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
     public static String folderName;
 
-    public void setupDriver(String browserType) {
+    public WebDriver setupDriver(String browserType) {
         WebDriver driver = null;
-
-        if(browserType.equalsIgnoreCase("")) browserType = "chrome";
 
         switch (browserType.toLowerCase()) {
             case "chrome":
@@ -36,13 +34,14 @@ public class GenericComponents {
         }
         driver.manage().window().maximize();
         setDriver(driver);
+        return getDriver();
     }
 
-    public WebDriver getDriver(){
+    public static WebDriver getDriver(){
         return driverThreadLocal.get();
     }
 
-    public void setDriver(WebDriver driver){
+    public static void setDriver(WebDriver driver){
         driverThreadLocal.set(driver);
     }
 

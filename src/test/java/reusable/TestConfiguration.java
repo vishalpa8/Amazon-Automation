@@ -1,22 +1,14 @@
 package reusable;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import dataproviders.YamlDataReader;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.annotations.*;
 
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-public class TestConfiguration extends GenericComponents {
+public class TestConfiguration extends WebDriverFactory {
     public final String appUrl = "https://www.amazon.in";
     static public YamlDataReader yamlDataReader = null;
 
@@ -30,8 +22,9 @@ public class TestConfiguration extends GenericComponents {
 
     @BeforeTest
     public void tearUp(){
-        setupDriver("");
-        driver = getDriver();
+        String browserType = System.getProperty("browser") == null ?
+                "chrome" : System.getProperty("browser");
+        driver = setupDriver(browserType);
     }
 
 

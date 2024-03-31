@@ -5,7 +5,7 @@ TestId_01_VerifyUserSearchForGivenProductTest:
          SearchProduct: "redmi 13C",Ram: "4 to 5.9 GB",OperatingSystem: "Android 13.0",ScreenSize: "5.5 in & above",BatteryCapacity: "5,000 to 5,999 mAh"}
 
 TestId_02_VerifyProductDetailsTest:
-  testId02_productDetailsTest:
+  testId_02_productDetailsTest:
     smoke:
       - {ProductName: "Apple iPhone 13 (128GB) - Blue",Category: "Electronics"}
 

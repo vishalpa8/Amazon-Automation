@@ -8,12 +8,11 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-import java.awt.*;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class TestListener extends GenericComponents implements ITestListener {
+public class TestListener extends WebDriverFactory implements ITestListener {
     ExtentReports reports = getReportObjects();
     ExtentTest test;
     static String reportPath;
@@ -38,6 +37,12 @@ public class TestListener extends GenericComponents implements ITestListener {
 //        String throwableMessage = getFullStackTrace(result.getThrowable());
 //        writeToFileAndOpenWithNotePad(throwableMessage);
     }
+
+    @Override
+    public void onTestSkipped(ITestResult result){
+        extentTest.get().fail(result.getThrowable());
+    }
+
     @Override
     public void onFinish(ITestContext context){
         reports.flush();
@@ -48,10 +53,9 @@ public class TestListener extends GenericComponents implements ITestListener {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy_hh-mm-ss_a");
         String timestamp = dateFormat.format(new Date());
         REPORT_NAME = REPORTS_DIR + File.separator + REPORT_NAME + timestamp;
-        System.out.println("4: " + REPORT_NAME);
         reportPath = REPORT_NAME + File.separator + "index.html";
         ExtentSparkReporter reporter = new ExtentSparkReporter(reportPath);
-        reporter.config().setReportName("Amazon Automation Results");
+        reporter.config().setReportName("Report_" + timestamp);
         reporter.config().setDocumentTitle("Test Results");
 
         ExtentReports extentReports = new ExtentReports();

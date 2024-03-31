@@ -18,7 +18,7 @@ public class TestId_02_VerifyProductDetailsTest extends TestConfiguration {
     ProductPage productPage;
 
     @Test(dataProvider = "testData-dataSource", dataProviderClass = YamlDataProvider.class)
-    public void testId02_productDetailsTest(Map<String,String> data){
+    public void testId_02_productDetailsTest(Map<String,String> data){
         String product = data.get("ProductName");
         String category = data.get("Category");
 
