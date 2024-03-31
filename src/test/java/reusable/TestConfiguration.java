@@ -21,10 +21,8 @@ public class TestConfiguration extends WebDriverFactory {
 
 
     @BeforeTest
-    public void tearUp(){
-        String browserType = System.getProperty("browser") == null ?
-                "chrome" : System.getProperty("browser");
-        driver = setupDriver(browserType);
+    public void tearUp() {
+        driver = setupDriver(getBrowser());
     }
 
 
@@ -32,7 +30,6 @@ public class TestConfiguration extends WebDriverFactory {
     public void tearDown(){
         driver.quit();
     }
-
 
 
     @AfterSuite

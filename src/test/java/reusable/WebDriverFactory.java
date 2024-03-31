@@ -9,7 +9,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Properties;
 
 public class WebDriverFactory {
 
@@ -57,5 +60,19 @@ public class WebDriverFactory {
             throw new RuntimeException(e);
         }
         return file.getAbsolutePath();
+    }
+
+    public String getBrowser(){
+        Properties properties = new Properties();
+        FileInputStream fileInputStream = null;
+        try {
+            fileInputStream = new FileInputStream(System.getProperty("user.dir") +
+                    File.separator + "src//test//resources" + File.separator + "globalSettings.properties");
+            properties.load(fileInputStream);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return System.getProperty("browser") == null ?
+                properties.getProperty("browser") : System.getProperty("browser");
     }
 }
