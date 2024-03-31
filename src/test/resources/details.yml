@@ -1,0 +1,25 @@
+TestId_01_VerifyUserSearchForGivenProductTest:
+  testId_01_UserSearchForExistingProduct:
+    smoke:
+      - {ProductName: "Redmi 13C (Starfrost White, 4GB RAM, 128GB Storage)",Category: "Electronics",
+         SearchProduct: "redmi 13C",Ram: "4 to 5.9 GB",OperatingSystem: "Android 13.0",ScreenSize: "5.5 in & above",BatteryCapacity: "5,000 to 5,999 mAh"}
+
+TestId_02_VerifyProductDetailsTest:
+  testId02_productDetailsTest:
+    smoke:
+      - {ProductName: "Apple iPhone 13 (128GB) - Blue",Category: "Electronics"}
+
+TestId_03_VerifySearchFunctionalityWithSuggestions:
+  testId_03_SearchFunctionalityWithSuggestions:
+    smoke:
+      - {ProductName: "Redmi 1",Category: "Electronics"}
+
+TestId_04_VerifyAddProductToCartTest:
+  testId_04_AddProductToCartTest:
+    smoke:
+      - {ProductName: "Apple iPhone 13 (128GB) - Blue",Category: "Electronics"}
+
+TestId_05_VerifyFooterLinksTest:
+  testId_05_FooterLinksTest:
+    smoke:
+      - {ProductName: "Apple iPhone 13 (128GB) - Blue",Category: "Electronics"}

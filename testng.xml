@@ -1,0 +1,38 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="suite" parallel="tests" thread-count="2">
+    <listeners>
+        <listener class-name="reusable.TestListener"/>
+    </listeners>
+
+    <test name="Given Product Test">
+        <classes>
+            <!-- Add your test classes here -->
+            <class name="com.steps.TestId_01_VerifyUserSearchForGivenProductTest"/>
+        </classes>
+    </test>
+
+    <test name="Product Details Test">
+        <classes>
+            <!-- Add your test classes here -->
+            <class name="com.steps.TestId_02_VerifyProductDetailsTest"/>
+        </classes>
+    </test>
+    <test name="Search Functionality Suggestions Test">
+        <classes>
+            <!-- Add your test classes here -->
+            <class name="com.steps.TestId_03_VerifySearchFunctionalityWithSuggestions"/>
+        </classes>
+    </test>
+    <test name="Add To Card Functionality Test">
+        <classes>
+            <!-- Add your test classes here -->
+            <class name="com.steps.TestId_04_VerifyAddProductToCartTest"/>
+        </classes>
+    </test>
+    <test name="Footer Links Test">
+        <classes>
+            <!-- Add your test classes here -->
+            <class name="com.steps.TestId_05_VerifyFooterLinksTest"/>
+        </classes>
+    </test>
+</suite>
